@@ -1,3 +1,47 @@
+\newpage
 \begin{exercise}
-Exercise 0.0.2
+    Let A, B be sets (maybe infinite), and $(x_{n,m})_{n\in A,m\in B},\quad x_{n,m}\in [0, +\infty]$ be a doubly infinite sequence of extended non-negative reals. Show that $$\sum_{(n,m) \in A \times B} x_{n,m} = \sum_{n\in A}\sum_{m\in B} x_{n,m} = \sum_{m\in B}\sum_{n\in A} x_{n,m}$$
 \end{exercise}
+\textbf{Intuition:}
+\begin{itemize}
+    \item For tenary equation, we will prove 2 binary equalities then bridge them. We can use same strategy for Tonelli's theorem for reference. 
+    \item Cartesian over finite sets can be written down to collections of collections.
+    \item Tonelli's theorem: nonnegativity + directed finite approximations
+\end{itemize}
+\begin{proof}
+    Let $F \subseteq A \times B$ be a finite subset of Cartesian product of A and B. We define $F_A = \{n \in A: \exists m \in B, (n, m) \in F\}$ and $F_B = \{m \in B: \exists n \in A, (n, m) \in F\}$. It suffices to show that $F_A$ and $F_B$ are finite sets, and $F_A \subseteq A, F_B \subseteq B$. F is then can be written as subset of Cartesian of finite sets (big brain move) $F \subseteq F_A \times F_B$. As a result, we have:
+    \[
+        \sum_{(n,m) \in F} x_{n,m} \leq \sum_{(n, m) \in F_A \times F_B} x_{n,m} = \sum_{n\in F_A}\sum_{m\in F_B} x_{n,m} \leq \sum_{n\in A}\sum_{m\in B} x_{n,m} \quad (a)
+    \]
+    We need to prove that:     
+    \[
+    \sup_{F}  \sum_{(n,m) \in F} x_{n,m} = \sup_{F_A, F_B} \sum_{n\in F_A}\sum_{m\in F_B} x_{n,m}\qquad \text{(1)} 
+    \]
+    \[
+    \sup_{F_A, F_B} \sum_{n\in F_A}\sum_{m\in F_B} x_{n,m} = \sum_{n \in A}\sum_{m \in B} x_{n,m}\qquad \text{(2)} 
+    \]
+    \textbf{Lemma 1:} If N is finite and $a_{n, M} = \sum_{m \in M} x_{n,m} \in [0, +\infty]\quad \forall n\in N$, then $\sum_{n\in N} sup_{M} a_{n,M} = sup_{M} \sum_{n\in N} a_{n,M}$ \\
+    \textbf{Proof of Lemma 1:} For every M, $a_{n, M} \leq \sup_M a_{n,M}$ (definition of supremum), therefore $\sup_M \sum_{n\in N} a_{n, M} \leq \sum_{n\in N} sup_M a_{n,M}$. On the contrary, we need to prove $\sum_{n\in N}  \sup_M a_{n,M} \leq\sup_M \sum_{n\in N} a_{n, M}$ to establish equality. This proof has to solve two cases: (1) if $\sum_{n\in N} \sup_M a_{n, M} = \infty$ then there exists at least one element $a_{n_i, M_i} = \infty$ since $N$ is finite, therefore $sup_{M} \sum_{n\in N} a_{n,M} = \infty$ which proves the point, (2) if $a_{n,M}$ is real then M is finite by constraint, by definition of supremum, we can always choose a finite subset $M_n \subset M$ such that $\sup_{M} \sum_{m\in M} a_{n, M} - \frac \epsilon ||N|| \leq a_{n, M_n} \leq \sup_{M} \sum_{m\in M} a_{n, M}$, where gathered sum induces: 
+    \[
+    \sum_{n\in N} a_{n,M} \geq \sum_{n\in N} \sup_M a_{n,M} - \epsilon
+    \]
+    This is true for every $\epsilon > 0$, therefore $\sup_{M} \sum_{n\in N} a_{n,M} \geq \sum_{n\in N} \sup_M a_{n,M}$.
+
+    For (2), this needs to be explicitly proven through induction. For each fixed n, we can see that: 
+    \[
+    \sum_{m\in B} x_{n,m} = \sup_{M' \subseteq B, M' \text{ finite}} \sum_{m \in M'} x_{n,m}
+    \]
+    Pack this sum as element and with A, we results in final supremum of finite sum:
+    \[
+        \sum_{n\in A}\sum_{m\in B} x_{n,m} = \sup_{\substack{F_A \subseteq A, F_A \text{ finite} \\ F_B \subseteq B, F_B \text{ finite}}} \sum_{n\in F_A}\sum_{m\in F_B} x_{n,m} 
+    \]
+
+
+    For (1), denoting left and right sides of (1) as $S_1$ and $S_2$ respectively, (a) has proven that $\sum_{(n,m) \in F} x_{n,m} \leq \sum_{(n, m) \in F_A \times F_B} x_{n,m} \leq S_2$ for every finite set of F, therefore $S_1 \leq S_2$ (1a). On the other hand,  $\sum_{(n, m) \in F_A \times F_B} x_{n,m} = \sum_{n\in F_A}\sum_{m\in F_B} x_{n,m}$. For $F_A \subseteq A$ and $F_B \subseteq B$, we would have $F_A \times F_B \subseteq A \times B$ whose supremum is taken by $S_1$, which results in $\sum_{n\in F_A}\sum_{m\in F_B} x_{n,m} \leq S_1$ for every finite $F_A$ and $F_B$. Therefore, $S_2 \leq S_1$ (1b). As a result from (1a) and (1b), equation (1) is proven.
+
+    In conclusion, combining (1) and (2), we will have: 
+    \[
+    \sum_{(n,m) \in A \times B} x_{n,m} = \sup_{F}  \sum_{(n,m) \in F} x_{n,m} = \sup_{F_A, F_B} \sum_{n\in F_A}\sum_{m\in F_B} x_{n,m} = \sum_{n \in A}\sum_{m \in B} x_{n,m}
+    \]
+    The same proof goes for equation: $ \sum_{(n,m) \in A \times B} x_{n,m} = \sum_{m \in B}\sum_{n \in A} x_{n,m}$
+\end{proof}
