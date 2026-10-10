@@ -1,0 +1,37 @@
+\textbf{Lemma 1.1.2} Let $E \subset R^d$ be an elementary set.
+(ii) If $E = \cup_{i=1}^n B_i$, and $E = \cup_{j=1}^m C_j$
+Then $\sum_{i=1}^n |B_i| = \sum_{j=1}^m |B_j|$
+
+\textbf{Proof}
+
+First, we need prove ${B_i \cap C_j}_{i,j}$ are boxes. Considering
+\[
+\begin{split}
+B_i = I_{i,1} \times \dots \times I_{i,d}\\
+C_j = J_{j,1} \times \dots \times J_{j,d}\\
+I_{i,r} \cap J_{j,r} = I' || \emptyset
+\end{split}
+\]
+which implies $B_i \cap C_j = box || \emptyset $
+
+Suppose overlap 
+\[
+(B_i \cap C_j) \cap (B_i' \cap C_j') \neq \emptyset
+\]
+\[
+\implies x \in B_i \cap B_i' \text{ and } x \in C_j \cap C_j'
+\]
+But $B_i, B_i'$ disjoint which cause a contradiction.
+Hence, $B_i \cap C_j$ mutually disjoint.
+
+$\forall x \in E$, always $\exists i$ that $x \in B_i$ and j that $x \in C_j$
+This means $x \in B_i \cap C_j \implies E \subseteq \cup_{i,j}(B_i \cap C_j)$ 
+We also have
+\[
+B_i \cap C_j \subseteq E \implies \cup_{i,j}(B_i \cap C_j) \subseteq E
+\]
+Combine these equations , we have
+\[
+E = \sqcup_{i,j} (B_i \cap C_j)
+\]
+Apply measure function and sum up with double indexing result the desired equality.
