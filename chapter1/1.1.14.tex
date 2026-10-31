@@ -1,0 +1,110 @@
+\noindent\textbf{Exercise 1.1.14 (Dyadic approximation and Jordan measurability).}\par
+Let $E\subset\mathbb{R}^d$ be bounded. For $n\geq 0$, let
+$\mathcal D_n$ be the dyadic cubes of side length $h_n=2^{-n}$,
+and set
+\[
+N_n^-:=\#\{Q\in\mathcal D_n:Q\subseteq E\},\qquad
+N_n^+:=\#\{Q\in\mathcal D_n:Q\cap E\neq\varnothing\}.
+\]
+Show that $E$ is Jordan measurable if and only if
+\[
+2^{-dn}(N_n^+-N_n^-)\longrightarrow0.
+\]
+In this case, show that both $2^{-dn}N_n^-$ and $2^{-dn}N_n^+$
+converge to $m(E)$.
+
+\begin{proof}
+For any bounded $T\subset\mathbb R^d$, write
+\[
+I_n(T):=\bigcup_{\substack{Q\in\mathcal D_n\\Q\subseteq T}}Q,
+\qquad
+O_n(T):=\bigcup_{\substack{Q\in\mathcal D_n\\Q\cap T\neq\varnothing}}Q.
+\]
+Only finitely many cubes at scale $n$ intersect $T$; hence
+$I_n(T)$ and $O_n(T)$ are elementary. The cubes at each scale
+partition $\mathbb R^d$, so
+\[
+I_n(T)\subseteq T\subseteq O_n(T),\qquad
+m(I_n(E))=2^{-dn}N_n^-,\quad m(O_n(E))=2^{-dn}N_n^+.
+\tag{1}
+\]
+
+\emph{Claim.} If $S$ is elementary, then
+\[
+m(I_n(S))\longrightarrow m(S),\qquad
+m(O_n(S))\longrightarrow m(S).
+\tag{2}
+\]
+Indeed, for an interval $J\subset\mathbb R$ of length $\ell$,
+only the dyadic intervals meeting its two endpoints can contribute
+to the difference between inner and outer approximations. Thus,
+with $h=h_n$,
+\[
+(\ell-2h)_+\leq m_1(I_n(J))\leq\ell
+\leq m_1(O_n(J))\leq\ell+2h.
+\]
+Consequently, both one-dimensional approximation measures tend
+to $\ell$. For a box $R=J_1\times\cdots\times J_d$, the dyadic
+partition is a product partition, so
+\[
+I_n(R)=\prod_{j=1}^d I_n(J_j),\qquad
+O_n(R)=\prod_{j=1}^d O_n(J_j).
+\]
+The elementary product formula now gives
+$m(I_n(R))\to |R|$ and $m(O_n(R))\to |R|$.
+For an elementary set $S=\bigsqcup_{k=1}^M R_k$, note that
+\[
+\sum_{k=1}^M m(I_n(R_k))\leq m(I_n(S))\leq m(S)
+\leq m(O_n(S))\leq\sum_{k=1}^M m(O_n(R_k)).
+\]
+Both outermost expressions converge to
+$\sum_{k=1}^M|R_k|=m(S)$, proving (2) by squeezing.
+
+Suppose first that $E$ is Jordan measurable. Given
+$\varepsilon>0$, Exercise~1.1.5 supplies elementary sets
+$A\subseteq E\subseteq B$ such that
+$m(B\setminus A)<\varepsilon/3$.
+Since dyadic inner and outer approximations preserve inclusions,
+\[
+I_n(A)\subseteq I_n(E)\subseteq O_n(E)\subseteq O_n(B).
+\]
+By (2), for all sufficiently large $n$,
+\[
+0\leq m(A)-m(I_n(A))<\varepsilon/3,
+\]
+and
+\[
+0\leq m(O_n(B))-m(B)<\varepsilon/3.
+\]
+Therefore
+\[
+\begin{aligned}
+0\leq m(O_n(E))-m(I_n(E))
+&\leq m(O_n(B))-m(I_n(A))\\
+&=[m(O_n(B))-m(B)]+[m(B)-m(A)]\\
+&\qquad+[m(A)-m(I_n(A))] < \varepsilon.
+\end{aligned}
+\]
+By (1), $2^{-dn}(N_n^+-N_n^-)\to0$.
+
+Conversely, suppose $2^{-dn}(N_n^+-N_n^-)\to0$.
+For every $\varepsilon>0$ we may choose $n$ with
+\[
+m(O_n(E)\setminus I_n(E))
+=m(O_n(E))-m(I_n(E))<\varepsilon.
+\]
+Since $I_n(E)\subseteq E\subseteq O_n(E)$ and both approximations
+are elementary, Exercise~1.1.5 implies that $E$ is Jordan measurable.
+
+Finally, for a Jordan measurable $E$, monotonicity gives
+\[
+m(I_n(E))\leq m(E)\leq m(O_n(E)).
+\]
+The difference of the outer bounds tends to zero, so both
+converge to $m(E)$. Apply (1) to obtain
+\[
+\displaystyle
+m(E)=\lim_{n\to\infty}2^{-dn}N_n^-
+=\lim_{n\to\infty}2^{-dn}N_n^+.
+\]
+\end{proof}
