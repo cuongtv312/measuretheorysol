@@ -1,0 +1,30 @@
+\begin{exercise}
+(Balls are Jordan measurable). Let $B(x,r)=\{y\in\mathbb R^d:|y-x|<r\}$ and $\overline B(x,r)=\{y\in\mathbb R^d:|y-x|\le r\}$.
+
+(1) Show that balls are Jordan measurable with $m(B(x,r))=m(\overline B(x,r))=c_d r^d$ for some $c_d>0$ depending only on $d$.
+
+(2) Show that $\left(\frac{2}{\sqrt d}\right)^d\le c_d\le 2^d$.
+\end{exercise}
+
+\begin{proof}
+By translation invariance, $B(x,r) = B(0,r) + x$ if $B(x,r)$ is Jordan measurable.
+
+\noindent(1) Split $\overline{B}(0,r)$ into upper and lower halves. Let $y'=(y_1,\dots,y_{d-1}) \in \mathbb{R}^{d-1}$ and $M = [-r,r]^{d-1}$ be a closed box. 
+Define $f(y') = \sqrt{r^2 - |y'|^2}$ on $M$. 
+The upper half $\overline{B}^+(0,r) = \{(y',y_d) \in M \times \mathbb{R} : 0 \le y_d \le f(y')\}$ is Jordan measurable by Ex. 1.1.7(2). 
+Similarly, the lower half is bounded by the region under $-f$ and also Jordan measurable. 
+Thus $\overline{B}(0,r) = \overline{B}^+ \cup \overline{B}^-$ is Jordan measurable.
+
+Let $C = \overline{B}(0,r) \setminus B(0,r)$ be the cover. By Ex. 1.1.7(1), $C$ is Jordan measurable with $m(C)=0$. By finite additivity, $B(0,r)$ is Jordan measurable.
+
+Let $S(x) = r \cdot x$ ($r > 0$). For a box $B = I_1 \times \dots \times I_d$, $S(B) = (r I_1) \times \dots \times (r I_d)$ has volume $|S(B)| = r^d |B|$. 
+For an elementary set $E = \bigcup_{i=1}^k B_i$ of disjoint boxes, $S(E) = \bigcup S(B_i)$ is elementary with $m(S(E)) = r^d m(E)$.
+
+For $A \subset E \subset B$, $S(A) \subset S(E) \subset S(B)$, $m_{*,J}(S(E)) = r^d m_{*,J}(E)$ and $m^{*,J}(S(E)) = r^d m^{*,J}(E)$. Assume E is Jordan measurable, then 
+$m_{*,J}(E) = m^{*,J}(E) = m(E)$$\implies$ $S(E)$ is Jordan measurable with $m(S(E)) = r^d m(E)$. 
+$ \implies $ $ m(B(0,r)) = r^d m(B(0,1)) = c_d r^d$ where $c_d := m(B(0,1))$.
+
+(2) Consider circumscribed cube $D_1$ with side $l = 2r \implies m(D_1) = (2r)^d = 2^d r^d$. 
+Consider inscribed cube $D_2$ with $d \cdot l^2 = (2r)^2 \implies l = \frac{2r}{\sqrt{d}} \implies m(D_2) = \left(\frac{2}{\sqrt{d}}\right)^d r^d$. 
+By monotonicity, $m(D_2) \le m(B(0,r)) \le m(D_1)$, giving $\left(\frac{2}{\sqrt{d}}\right)^d \le c_d \le 2^d$.
+\end{proof}
