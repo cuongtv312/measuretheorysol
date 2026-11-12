@@ -1,0 +1,28 @@
+\textbf{Exercise 1.2.5} $E = \bigcup_{n=1}^\infty B_n$ where interior $B_i^o$ pairwise disjoint
+Then, 
+$m^*(E) = m_{*,(j)}(E)$
+
+\textbf{Proof}
+Let A elementary set $\subset E$ which follows \textbf{Lemma 1.2.6} and \textbf{monotonicity}:
+\[
+m(A)  = m^*(A) \le m^*(E) \quad \forall E  \subset \mathbb{R}^d
+\]
+Taking sup over all set A we have:
+\[
+m_{*, (J)} (E) \le m^* (E)
+\]
+
+Let $A_N = B_1 \cup B_2 \dots \cup B_N$, finite almost disjoint boxes.
+Following properties of \textbf{interior volume}, \textbf{finite additivity} of disjoint boxes and \textbf{monotonicity} 
+\[
+\sum_{n=1 }^N |B_n| = \sum_{n=1}^N |B_n^o| = m (\bigcup B_n^o) \le  m(A_N)
+\]
+Because $A_N \subset E$, we have $m(A_N) \le m_{*, (J)} (E)$
+
+Because of $E = \bigcup B_n$ which almost disjoint, following \textbf{Lemma 1.2.9}, 
+\[
+m^*(E) = \sum_{n=1}^\infty |B_n| = \lim_{N\rightarrow \infty} \sum_{n=1}^{N} |B_n| \le \lim_{N \rightarrow \infty} m(A_N) \le m_{*,(J)}(E)
+\]
+(lim exists because $A_N \subset A_{N+1}$ so $m(A_N)$ is nondecreasing by monotonicity)
+
+From inequality we claim $m^*(E) = m_{*, (J)}(E)$
