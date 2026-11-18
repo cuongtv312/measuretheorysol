@@ -1,0 +1,81 @@
+\noindent\textbf{Exercise 1.1.15 (Uniqueness of Jordan measure).}\par
+
+Let $d\geq1$ and let $m':\mathcal J(\mathbb R^d)\to\mathbb R_{\geq0}$ satisfy
+non-negativity, finite additivity, and translation invariance.
+Show that there exists $c\geq0$ such that
+\[
+  m'(E)=c\,m(E)\qquad \text{for every }E\in\mathcal J(\mathbb R^d).
+\]
+In particular, if $m'([0,1)^d)=1$, show that $m'=m$.
+
+\begin{proof}
+Set $c:=m'([0,1)^d)\geq 0$.
+Since every elementary set is Jordan measurable,
+the restriction of $m'$ to $\mathcal E(\mathbb R^d)$
+satisfies the three axioms. Thus, by Exercise 1.1.3,
+\begin{equation}
+  m'(A)=cm(A)
+  \qquad\text{for every elementary set }A.
+  \tag{1}
+\end{equation}
+
+We first note that $m'$ is monotone on
+$\mathcal J(\mathbb R^d)$. Indeed, if
+$E\subseteq F$ are Jordan measurable, then
+$F\setminus E$ is Jordan measurable by
+Exercise 1.1.6. Since
+$F=E\sqcup(F\setminus E)$, finite additivity
+and non-negativity give
+\[
+  m'(F)=m'(E)+m'(F\setminus E)\geq m'(E).
+\]
+
+Now let $E\in\mathcal J(\mathbb R^d)$ be arbitrary.
+By the definition of Jordan measurability,
+\begin{equation}
+ m(E)
+ =\sup_{\substack{A\subseteq E\\ A\text{ elementary}}}m(A)
+ =\inf_{\substack{E\subseteq B\\ B\text{ elementary}}}m(B).
+ \tag{2}
+\end{equation}
+
+For every elementary set $A\subseteq E$,
+monotonicity and (1) give
+\[
+  cm(A)=m'(A)\leq m'(E).
+\]
+Thus $m'(E)$ is an upper bound for all such
+$cm(A)$. Taking the supremum and using (2),
+together with $c\geq0$, we obtain
+\begin{equation}
+ cm(E)
+ =\sup_{\substack{A\subseteq E\\ A\text{ elementary}}}cm(A)
+ \leq m'(E).
+ \tag{3}
+\end{equation}
+
+Similarly, for every elementary set $B\supseteq E$,
+monotonicity and (1) yield
+\[
+  m'(E)\leq m'(B)=cm(B).
+\]
+Hence $m'(E)$ is a lower bound for all such
+$cm(B)$. Taking the infimum and using (2),
+we obtain
+\begin{equation}
+ m'(E)
+ \leq\inf_{\substack{E\subseteq B\\ B\text{ elementary}}}cm(B)
+ =cm(E).
+ \tag{4}
+\end{equation}
+
+Combining (3) and (4), we conclude that
+\[
+  \boxed{m'(E)=cm(E).}
+\]
+Since $E$ was arbitrary, the identity holds
+for every Jordan measurable set.
+
+In particular, if $m'([0,1)^d)=1$, then
+$c=1$, and hence $m'=m$.
+\end{proof}
