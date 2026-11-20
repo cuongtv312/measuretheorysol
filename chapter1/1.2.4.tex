@@ -1,0 +1,75 @@
+\noindent\textbf{Exercise 1.2.4 (Positive distance between disjoint closed sets).}
+Let $E,F\subset\mathbb R^d$ be disjoint closed sets, at least one of
+which is compact. Prove that
+\[
+\operatorname{dist}(E,F)
+:=\inf\{\lVert x-y\rVert:x\in E,\ y\in F\}>0.
+\]
+Give a counterexample if the compactness assumption is removed.
+
+\begin{proof}
+If one of the sets is empty, the claim holds under the usual
+convention $\inf\varnothing=+\infty$. Hence assume that $E$ and $F$
+are nonempty. By symmetry, we may suppose that $E$ is compact.
+
+\smallskip
+\noindent\emph{1. The distance-to-$F$ function is Lipschitz.}
+Define
+\[
+ f:\mathbb R^d\longrightarrow[0,\infty),\qquad
+ f(x):=\operatorname{dist}(x,F)
+     =\inf_{y\in F}\lVert x-y\rVert.
+\]
+For any $x,x'\in\mathbb R^d$ and $y\in F$, the triangle inequality gives $\lVert x-y\rVert \le \lVert x-x'\rVert+\lVert x'-y\rVert.$ \\
+Taking the infimum over $y\in F$, we obtain
+$f(x)\le\lVert x-x'\rVert+f(x')$.
+Interchanging $x$ and $x'$ yields
+\[
+\,|f(x)-f(x')|\le\lVert x-x'\rVert\,.
+\]
+Thus $f$ is $1$-Lipschitz, and in particular continuous.
+
+\smallskip
+\noindent\emph{2. The function is strictly positive on $E$.}
+Fix $x\in E$. Since $E\cap F=\varnothing$, we have $x\notin F$.
+The set $F$ is closed, so its complement is open. Consequently,
+there exists $r_x>0$ such that
+$B(x,r_x)\cap F=\varnothing$. Hence
+$\lVert x-y\rVert\ge r_x$ for every $y\in F$, and therefore
+\[
+ f(x)=\inf_{y\in F}\lVert x-y\rVert\ge r_x>0.
+\]
+
+\smallskip
+\noindent\emph{3. Compactness gives a uniform positive bound.}
+Because $f$ is continuous and $E$ is nonempty and compact, the
+extreme value theorem supplies $x_0\in E$ such that $\delta:=\min_{x\in E}f(x)=f(x_0).$\\
+By Step 2, $\delta>0$. Finally,
+\[
+\operatorname{dist}(E,F)
+=\inf_{x\in E}\inf_{y\in F}\lVert x-y\rVert
+=\min_{x\in E}f(x)
+=\delta>0.
+\]
+
+\smallskip
+\noindent\emph{Counterexample without compactness.}
+Let $e_1=(1,0,\ldots,0)\in\mathbb R^d$ and set
+\[
+ E=\{ne_1:n=2,3,\ldots\},\qquad
+ F=\{(n+1/n)e_1:n=2,3,\ldots\}.
+\]
+Both sets are closed: each has only finitely many points in any
+bounded subset of $\mathbb R^d$, so neither has a finite accumulation
+point outside itself. They are disjoint because $n+1/n$ is not an
+integer when $n\ge2$. Neither set is compact, as both are unbounded.
+For each $n\ge2$ the pair $ne_1\in E$ and
+$(n+1/n)e_1\in F$ satisfies
+\[
+0\le\operatorname{dist}(E,F)
+\le\bigl\lVert ne_1-(n+1/n)e_1\bigr\rVert
+=\frac1n.
+\]
+Letting $n\to\infty$ gives
+$\operatorname{dist}(E,F)=0$, as required.
+\end{proof}
